@@ -2,7 +2,7 @@ class Mechanic:
     def __init__(self, mechanicID, firstName, lastName, phoneNumber, address):
         self.firstName = firstName
         self.lastName = lastName
-        self.mechanicId = mechanicID
+        self.mechanicID = mechanicID
         self.phoneNumber = phoneNumber
         self.address = address
 
@@ -18,11 +18,11 @@ class Mechanic:
     def setLastName(self, lastName):
         self.lastName = lastName
 
-    def getMechanicID(self):
-        return self.mechanicId
+    def getMechanicIDmechanicID(self):
+        return self.mechanicID
 
-    def setMechanicID(self, mechanicID):
-        self.mechanicId = mechanicID
+    def setMechanicIDmechanicID(self, mechanicID):
+        self.mechanicID = mechanicID
 
     def getPhoneNumber(self):
         return self.phoneNumber
@@ -39,4 +39,4 @@ class Mechanic:
 
 
     def __str__(self):
-        return f"Mechanic Name: {self.firstName} {self.lastName}\nMechanic ID: {self.mechanicId}\nPhone Number: {self.phoneNumber}\nAddress: {self.address}"
+        return f"Mechanic Name: {self.firstName} {self.lastName}\nMechanic ID: {self.mechanicID.get}\nPhone Number: {self.phoneNumber}\nAddress: {self.address}"
