@@ -1,5 +1,6 @@
 class Receipt:
-    def __init__(self, customer, mechanic, vehicle, services, discount=0):
+    def __init__(self, date, customer, mechanic, vehicle, services, discount=0):
+        self.date = date
         self.customer = customer
         self.mechanic = mechanic
         self.vehicle = vehicle
@@ -10,19 +11,25 @@ class Receipt:
         self.finalAmount = 0
 
     def calculateTotal(self):
-        total = sum(service.price for service in self.services)
+        total = sum(service.cost for service in self.services)
         return total
 
     def calculateTaxes(self):
-        total = self.calculate_total()
+        total = self.calculateTotal()
         taxes = total * 0.05
         return taxes
 
-    def calculate_final_amount(self):
-        total = self.calculate_total()
-        taxes = self.calculate_taxes()
+    def calculateFinalAmount(self):
+        total = self.calculateTotal()
+        taxes = self.calculateTaxes()
         final_amount = total + taxes - self.discount
         return final_amount
+    
+    def date(self):
+        return self.date
+
+    def date(self, date):
+        self.date = date
 
     def getCustomer(self):
         return self.customer
@@ -73,18 +80,17 @@ class Receipt:
         self.finalAmount = finalAmount
 
     def __str__(self):
-            service_list = "\n".join([f"{i + 1}. {service}\n" for i, service in enumerate(self.services)])
-            total = self.calculate_total()
-            taxes = self.calculate_taxes()
-            final_amount = self.calculate_final_amount()
-            return f"Customer Name: {self.customer.getFirstName()} {self.customer.getLastName()}\n" \
-                f"Cell Phone Number: {self.phone}\n" \
+            service_list = ''.join([f"{i + 1}. {service.getServiceType().name}\n" for i, service in enumerate(self.services)])
+            total = self.calculateTotal()
+            taxes = self.calculateTaxes()
+            final_amount = self.calculateFinalAmount()
+            return f"========RECEIPT========\n" \
+                f"Customer Name: {self.customer.getFirstName()} {self.customer.getLastName()}\n" \
+                f"Phone Number: {self.customer.getPhoneNumber()}\n" \
                 f"Date: {self.date}\n" \
-                f"Mechanic: {self.mechanic}\n" \
-                f"Vehicle Type: {self.vehicleType}\n" \
-                f"Vehicle Color: {self.vehicleColor}\n" \
-                f"Vehicle ID: {self.vehicleId}\n\n" \
-                f"Services\n{service_list}" \
+                f"Mechanic: {self.mechanic.getFirstName()} {self.mechanic.getLastName()}\n" \
+                f"{self.vehicle}\n" \
+                f"Services:\n{service_list}" \
                 f"Taxes: {taxes:.2f}\n" \
                 f"Total: {total:.2f}\n" \
                 f"Discount: {self.discount:.2f}\n" \

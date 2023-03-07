@@ -1,33 +1,40 @@
 class Vehicle:
-    def __init__(self, make, model, color, vehicleID):
+    def __init__(self, make, model, color, year, vehicleID):
         self.make = make
         self.model = model
         self.color = color
+        self.year = year
         self.vehicleId = vehicleID
 
-    def get_make(self):
+    def getMake(self):
         return self.make
 
-    def set_make(self, make):
+    def setMake(self, make):
         self.make = make
 
-    def get_model(self):
+    def getModel(self):
         return self.model
 
-    def set_model(self, model):
+    def setModel(self, model):
         self.model = model
 
-    def get_color(self):
+    def getColor(self):
         return self.color
 
-    def set_color(self, color):
+    def setColor(self, color):
         self.color = color
+    
+    def getYear(self):
+        return self.year
 
-    def get_vehicleID(self):
+    def setYear(self, year):
+        self.year = year
+
+    def getVehicleID(self):
         return self.vehicleId
 
-    def set_vehicleID(self, vehicleID):
+    def setVehicleID(self, vehicleID):
         self.vehicleId = vehicleID
 
     def __str__(self):
-        return f"Vehicle Type: {self.make} {self.model} ({self.vehicleId})\nVehicle Color: {self.color}\n"
+        return f"Vehicle Type: {self.make} {self.model}\nVehicle Color: {self.color}\nVehicle Year: {self.year}\nVehicle ID: {self.vehicleId}"
